@@ -3,126 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Ads Agency - Grow Your Business</title>
-    <!-- Google Fonts for professional look -->
+    <title>Shubham Ads Agency | Scale Your Business</title>
+    <!-- Google Fonts -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0B0F19;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --primary-glow: #25D366;
+            --accent-glow: #6366F1;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
+
         body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+        /* Background Decorative Glows */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.15;
+        }
+        body::before { top: -50px; left: -50px; background: var(--accent-glow); }
+        body::after { bottom: -50px; right: -50px; background: var(--primary-glow); }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 550px;
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
-        .top-tag {
-            background: #ffebe6;
-            color: #ff4d4d;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        h1 {
-            font-size: 24px;
-            color: #111;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .subheadline {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .benefits-box {
-            text-align: left;
-            background: #f9fbfb;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #25D366;
-            margin-bottom: 35px;
-        }
-        .benefits-box h3 {
-            margin-bottom: 15px;
-            color: #222;
-        }
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            font-size: 15px;
-        }
-        .benefit-item span {
-            margin-right: 10px;
-            color: #25D366;
-            font-weight: bold;
-        }
-        .whatsapp-btn {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.2s, background-color 0.2s;
-            width: 100%;
-            max-width: 400px;
-        }
-        .whatsapp-btn:hover {
-            background-color: #20ba5a;
-            transform: scale(1.02);
-        }
-        .footer {
-            margin-top: 35px;
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: #A5B4FC;
+            padding: 6px 16px;
+            border-radius: 100px;
             font-size: 13px;
-            color: #999;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheadline {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 36px;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(37, 211, 102, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .feature-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin-bottom: 4px;
+        }
+
+        .feature-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: #000000;
+            text-decoration: none;
+            padding: 18px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+            transform: scale(1.01);
+        }
+
+        .cta-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #000000;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .footer span {
+            color: #F8FAFC;
+            font-weight: 600;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 24px; }
+            .wrapper { padding: 32px 16px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="top-tag">🚀 Want More Sales & High-Quality Leads?</div>
+<div class="wrapper">
+    <div class="badge">🚀 TOP-TIER MARKETING AD AGENCY</div>
     
-    <h1>Aapke Business Ke Liye Daily Non-Stop Business Leads Aur Sales Chahiye?</h1>
+    <h1>Aapke Business Ke Liye Daily Non-Stop Leads Aur Sales Chahiye?</h1>
     
-    <p class="subheadline">Shubham Ads Agency Se Facebook, Instagram Aur Google Ads Run Karwein Aur Apne Business Ko 10X Grow Karein!</p>
+    <p class="subheadline">Shubham Ads Agency Se Facebook, Instagram Aur Google Ads Run Karwein Aur Apne Business Profit Ko 10X Scale Karein!</p>
     
-    <div class="benefits-box">
-        <h3>Hum Aapki Help Kaise Karenge?</h3>
-        <div class="benefit-item"><span>✓</span> Targeted Leads: Sirf un logo ko ad dikhega jo kharidna chahte hain.</div>
-        <div class="benefit-item"><span>✓</span> Low Cost Per Lead (CPL): Kam se kam kharche me zyada fayda.</div>
-        <div class="benefit-item"><span>✓</span> Expert Ad Copy: Aise ads jo dekhte hi log click karein.</div>
-        <div class="benefit-item"><span>✓</span> Daily Reporting: Aapko rozana ka hisab milega.</div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <span class="icon">🎯</span>
+            <h4>Targeted Leads</h4>
+            <p>Sirf un logo ko ad dikhega jo kharidna chahte hain.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📉</span>
+            <h4>Low CPL</h4>
+            <p>Kam se kam ad budget me zyada se zyada conversions.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">✍️</span>
+            <h4>Expert Ad Copy</h4>
+            <p>High-converting creatives jo dekhte hi log click karein.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📊</span>
+            <h4>Daily Reporting</h4>
+            <p>Aapko rozana ka clear aur transparent data milega.</p>
+        </div>
     </div>
 
-    <!-- Direct WhatsApp Link with pre-filled message -->
-    <a href="https://wa.me!" class="whatsapp-btn" target="_blank">
-        💬 WhatsApp Par Free Consultation Lein
+    <!-- Premium WhatsApp Button -->
+    <a href="https://wa.me!" class="cta-btn" target="_blank">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.948 0c3.179.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.239 3.482 8.42-.003 6.597-5.34 11.945-11.893 11.945-1.996-.001-3.959-.5-5.698-1.448L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.847.001-2.63-1.019-5.101-2.871-6.955C16.552 1.949 14.09 1.95 11.46 1.95c-5.437 0-9.863 4.414-9.866 9.848-.001 1.701.453 3.361 1.314 4.816L1.812 21.14l4.835-1.986zm10.707-6.732c-.297-.148-1.758-.867-2.03-.967-.273-.099-.471-.148-.669.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.174.2-.298.3-.496.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+        </svg>
+        WhatsApp Par Free Consultation Lein
     </a>
 
     <div class="footer">
-        <strong>Shubham Ads Agency</strong> | 100% Trusted Growth Partner
+        © 2026 <span>Shubham Ads Agency</span> | All Rights Reserved.
     </div>
 </div>
 
