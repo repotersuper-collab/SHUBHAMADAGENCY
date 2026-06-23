@@ -1,3 +1,4377 @@
+
+Conversation with Gemini
+https://l.wl.co/l?u=https%3A%2F%2Fwww.alphaagoagency.com computer repair and IT services centre located in Sector 48, Sonipat, Haryana, India (data sourced from Google Maps listing of Nit Computer Centre, rebranded as Nevika Computer) The website should have a sleek, technology focused design with a dark-blue and cyan color theme, smooth animations, and a premium U1/UX. Include sections for Hero banner, About Us, Services (computer & laptop repair, hardware upgrades, software installation, vir removal, accessories sales), Photo Gallery with realistic computer-service images, Custome Reviews, Contact Details with address and working hours, and a visible Login button in the navigation bar. Add high quality tech related images, hover effects, responsive layout for mobile and desktop, and a clean professional typography to give a futuristic If company
+
+Here is a complete, production-ready HTML and CSS file for the Alpha Ago Agency (Nevika Computer) website. It features a sleek, futuristic dark-blue and cyan tech theme, premium UI/UX design with smooth CSS animations, hover effects, fully responsive layout, and all requested sections.
+
+You can save this code as index.html and open it in any browser.
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Ago Agency | Premium IT Services & Computer Repair</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0f1d;
+            --bg-surface: #111a30;
+            --bg-card: #172442;
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title ::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .cyan-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .login-btn {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: var(--primary);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* --- HERO BANNER --- */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,15,29,0.9) 40%, rgba(23,36,66,0.7)), 
+                        url('https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeIn ease 1.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--primary-glow);
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        /* --- ABOUT US --- */
+        #about {
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-number {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .about-image img {
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PHOTO GALLERY --- */
+        #gallery {
+            background: var(--bg-surface);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,15,29,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CUSTOMER REVIEWS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            padding: 35px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .review-card::after {
+            content: "\f10d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: rgba(0, 240, 255, 0.05);
+        }
+
+        .stars {
+            color: #ffb800;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* --- CONTACT & DETAILS --- */
+        #contact {
+            background: var(--bg-surface);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+        }
+
+        .contact-info-panel {
+            background: var(--bg-deep);
+            padding: 40px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .info-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(0, 240, 255, 0.05);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details li {
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-deep);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: #fff;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        textarea.form-input {
+            height: 150px;
+            resize: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .about-wrapper, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Can be expanded into a mobile burger menu as required */
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                ALPHA<span class="cyan-text">AGO</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="login-btn">Login</button>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">NEVIKA COMPUTER CENTRE</p>
+                <h1>Next-Gen Computer Repair & <span class="cyan-text">IT Architecture</span></h1>
+                <p>Premium technology solutions located in Sector 48, Sonipat. We bring futuristic hardware repairs, high-tier diagnosis, and robust software system configurations straight to your enterprise or home workstation.</p>
+                <a href="#contact"><button class="cta-btn">Book a Service</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Who We Are <span class="cyan-text">_</span></h2>
+                    <h3>Rebranded Excellence: From Nit Computer Centre to Nevika Computer</h3>
+                    <p>Alpha Ago Agency operates structural IT support rooted locally in Sonipat, Haryana. Over the years, our foundational commitment as a premier system service unit has grown to incorporate elite-tier hardware restorations and complex software network installations.</p>
+                    <p>We blend deep computational expertise with rapid modern troubleshooting deployment, ensuring that your workflow never experiences a bottleneck architecture failure.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Secure Testing</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Architecture</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141?q=80&w=600" alt="Cyberpunk Tech Lab Workbench">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Core IT Matrix <span class="cyan-text">Services</span></h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <h3>Computer & Laptop Repair</h3>
+                    <p>Component-level board diagnostics, screen replacements, thermal management re-pasting, and systematic structural device restorations.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Hardware Upgrades</h3>
+                    <p>Maximize computing matrix thresholds. Professional installation of high-velocity NVMe SSDs, expanded RAM kits, and elite processing units.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <h3>Software Installation</h3>
+                    <p>Clean system operating deployment configurations (Windows/Linux OS), native system driver environments, and productivity suites architecture tuning.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <h3>Virus & Malware Removal</h3>
+                    <p>Deep file cleaning, rootkit isolation, Trojan system purging, and advanced defensive network configuration layers to block digital incursions.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-plug"></i></div>
+                    <h3>Accessories Sales</h3>
+                    <p>Equip your workstation with authenticated enterprise parts, professional mechanical input arrays, high-speed routing nodes, and custom component components.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Operations <span class="cyan-text">Gallery</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=500" alt="Tablet Diagnostics">
+                    <div class="gallery-overlay"><span>Circuit Architecture Probe</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=500" alt="Hardware Repair Lab">
+                    <div class="gallery-overlay"><span>Motherboard Soldering Array</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=500" alt="Server Operations">
+                    <div class="gallery-overlay"><span>OS Network Configuration</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618060932014-4deda4932554?q=80&w=500" alt="Clean Rig Assembly">
+                    <div class="gallery-overlay"><span>Custom Processing Rig Build</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Client <span class="cyan-text">Testimonials</span></h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Nevika Computer Centre completely restored my studio workstation. Component upgrading was lightning fast, and the cyan custom cooling configuration runs exceptionally cool."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Aman Sharma</h4>
+                            <span>Local Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Top-tier software installation and optimization processes. They eradicated a resilient rootkit that standard programs completely missed. Highly professional."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Priya Das</h4>
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS & FORM SECTION -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Establish <span class="cyan-text">Connection</span></h2>
+            <div class="contact-wrapper">
+                
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <input type="text" class="form-input" placeholder="Your Name / Identity" required>
+                    <input type="email" class="form-input" placeholder="Your Digital Mail (Email)" required>
+                    <input type="text" class="form-input" placeholder="System Issue Subject">
+                    <textarea class="form-input" placeholder="Describe your hardware anomaly or required service parameters..."></textarea>
+                    <button type="submit" class="cta-btn">Transmit Signal</button>
+                </form>
+
+                <div class="contact-info-panel">
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-details">
+                            <h4>Physical Node Coordinates</h4>
+                            <p>Sector 48, Sonipat,<br>Haryana, India</p>
+                            <span style="font-size:0.8rem; color:var(--text-muted);">(Formerly Nit Computer Centre / Nevika Computer)</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-details">
+                            <h4>Operational Matrix Hours</h4>
+                            <ul>
+                                <li>Monday - Saturday: 09:30 AM – 07:30 PM</li>
+                                <li>Sunday: Closed / Emergency Response Nodes Only</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="info-details">
+                            <h4>Digital Contact Channels</h4>
+                            <p>Support Network: info@alphaagoagency.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alpha Ago Agency (Nevika Computer). Systems Engineered to Perfection. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+esme ajency ka name shubham Ads Agency daal do aur number me 9250984414
+
+Here is the updated code with the agency name changed to Shubham Ads Agency and the contact phone number 9250984414 integrated into the header and contact panel.
+
+You can save this as index.html:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Ads Agency | Premium IT Services & Computer Repair</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0f1d;
+            --bg-surface: #111a30;
+            --bg-card: #172442;
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyan-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-link {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-link {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .login-btn {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: var(--primary);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* --- HERO BANNER --- */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,15,29,0.9) 40%, rgba(23,36,66,0.7)), 
+                        url('https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeIn ease 1.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--primary-glow);
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        /* --- ABOUT US --- */
+        #about {
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-number {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .about-image img {
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PHOTO GALLERY --- */
+        #gallery {
+            background: var(--bg-surface);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,15,29,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CUSTOMER REVIEWS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            padding: 35px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .review-card::after {
+            content: "\f10d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: rgba(0, 240, 255, 0.05);
+        }
+
+        .stars {
+            color: #ffb800;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* --- CONTACT & DETAILS --- */
+        #contact {
+            background: var(--bg-surface);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+        }
+
+        .contact-info-panel {
+            background: var(--bg-deep);
+            padding: 40px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .info-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(0, 240, 255, 0.05);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details li, .info-details a {
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-deep);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: #fff;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        textarea.form-input {
+            height: 150px;
+            resize: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .about-wrapper, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                SHUBHAM<span class="cyan-text"> ADS AGENCY</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="tel:+919250984414" class="phone-link"><i class="fa-solid fa-phone"></i> 9250984414</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">NEVIKA COMPUTER CENTRE</p>
+                <h1>Next-Gen Computer Repair & <span class="cyan-text">IT Architecture</span></h1>
+                <p>Premium technology solutions located in Sector 48, Sonipat. We bring futuristic hardware repairs, high-tier diagnosis, and robust software system configurations straight to your enterprise or home workstation.</p>
+                <a href="#contact"><button class="cta-btn">Book a Service</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Who We Are <span class="cyan-text">_</span></h2>
+                    <h3>Rebranded Excellence: From Nit Computer Centre to Nevika Computer</h3>
+                    <p>Shubham Ads Agency operates structural IT support rooted locally in Sonipat, Haryana. Over the years, our foundational commitment as a premier system service unit has grown to incorporate elite-tier hardware restorations and complex software network installations.</p>
+                    <p>We blend deep computational expertise with rapid modern troubleshooting deployment, ensuring that your workflow never experiences a bottleneck architecture failure.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Secure Testing</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Architecture</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141?q=80&w=600" alt="Cyberpunk Tech Lab Workbench">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Core IT Matrix <span class="cyan-text">Services</span></h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <h3>Computer & Laptop Repair</h3>
+                    <p>Component-level board diagnostics, screen replacements, thermal management re-pasting, and systematic structural device restorations.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Hardware Upgrades</h3>
+                    <p>Maximize computing matrix thresholds. Professional installation of high-velocity NVMe SSDs, expanded RAM kits, and elite processing units.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <h3>Software Installation</h3>
+                    <p>Clean system operating deployment configurations (Windows/Linux OS), native system driver environments, and productivity suites architecture tuning.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <h3>Virus & Malware Removal</h3>
+                    <p>Deep file cleaning, rootkit isolation, Trojan system purging, and advanced defensive network configuration layers to block digital incursions.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-plug"></i></div>
+                    <h3>Accessories Sales</h3>
+                    <p>Equip your workstation with authenticated enterprise parts, professional mechanical input arrays, high-speed routing nodes, and custom component components.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Operations <span class="cyan-text">Gallery</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=500" alt="Tablet Diagnostics">
+                    <div class="gallery-overlay"><span>Circuit Architecture Probe</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=500" alt="Hardware Repair Lab">
+                    <div class="gallery-overlay"><span>Motherboard Soldering Array</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=500" alt="Server Operations">
+                    <div class="gallery-overlay"><span>OS Network Configuration</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1618060932014-4deda4932554?q=80&w=500" alt="Clean Rig Assembly">
+                    <div class="gallery-overlay"><span>Custom Processing Rig Build</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Client <span class="cyan-text">Testimonials</span></h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Nevika Computer Centre completely restored my studio workstation. Component upgrading was lightning fast, and the cyan custom cooling configuration runs exceptionally cool."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Aman Sharma</h4>
+                            <span>Local Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Top-tier software installation and optimization processes. They eradicated a resilient rootkit that standard programs completely missed. Highly professional."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Priya Das</h4>
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS & FORM SECTION -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Establish <span class="cyan-text">Connection</span></h2>
+            <div class="contact-wrapper">
+                
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <input type="text" class="form-input" placeholder="Your Name / Identity" required>
+                    <input type="email" class="form-input" placeholder="Your Digital Mail (Email)" required>
+                    <input type="text" class="form-input" placeholder="System Issue Subject">
+                    <textarea class="form-input" placeholder="Describe your hardware anomaly or required service parameters..."></textarea>
+                    <button type="submit" class="cta-btn">Transmit Signal</button>
+                </form>
+
+                <div class="contact-info-panel">
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-details">
+                            <h4>Physical Node Coordinates</h4>
+                            <p>Sector 48, Sonipat,<br>Haryana, India</p>
+                            <span style="font-size:0.8rem; color:var(--text-muted);">(Formerly Nit Computer Centre / Nevika Computer)</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-details">
+                            <h4>Operational Matrix Hours</h4>
+                            <ul>
+                                <li>Monday - Saturday: 09:30 AM – 07:30 PM</li>
+                                <li>Sunday: Closed / Emergency Response Nodes Only</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-details">
+                            <h4>Hotline Node</h4>
+                            <p><a href="tel:+919250984414" class="cyan-text">9250984414</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="info-details">
+                            <h4>Digital Contact Channels</h4>
+                            <p>Support Network: info@shubhamadsagency.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shubham Ads Agency (Nevika Computer). Systems Engineered to Perfection. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+bhai meta ads ke liye bola huu
+
+Oh! Acha, samajh gaya! Mera dhyaan us computer repair wale copy-paste text par chala gaya tha. Agar Shubham Ads Agency ek Meta Ads (Facebook & Instagram Advertising) agency hai, toh iska pure design aur content conversion, leads, aur ROI scale karne wale high-tech vibe par hona chahiye.
+
+Maine poora code update kar diya hai. Theme vahi sleek dark-blue aur cyan hai, lekin saari services ab Meta Ads Architecture, Pixel Tracking, Campaign Scaling, aur Lead Generation ke aas-pass hain.
+
+Is naye code ko index.html naam se save kar lo:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Ads Agency | Elite Meta Ads & Performance Marketing</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0f1d;
+            --bg-surface: #111a30;
+            --bg-card: #172442;
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyan-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-link {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-link {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .login-btn {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: var(--primary);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        /* --- HERO BANNER --- */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,15,29,0.9) 40%, rgba(23,36,66,0.7)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            animation: fadeIn ease 1.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            background: var(--primary);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--primary-glow);
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        /* --- ABOUT US --- */
+        #about {
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-number {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .about-image img {
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PHOTO GALLERY --- */
+        #gallery {
+            background: var(--bg-surface);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,15,29,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CUSTOMER REVIEWS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            padding: 35px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .review-card::after {
+            content: "\f10d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: rgba(0, 240, 255, 0.05);
+        }
+
+        .stars {
+            color: #ffb800;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* --- CONTACT & DETAILS --- */
+        #contact {
+            background: var(--bg-surface);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+        }
+
+        .contact-info-panel {
+            background: var(--bg-deep);
+            padding: 40px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .info-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(0, 240, 255, 0.05);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details li, .info-details a {
+            color: var(--text-muted);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-deep);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: #fff;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        textarea.form-input {
+            height: 150px;
+            resize: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .about-wrapper, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                SHUBHAM<span class="cyan-text"> ADS AGENCY</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Core Matrix</a>
+                <a href="#gallery" class="nav-link">Campaigns</a>
+                <a href="#reviews" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="tel:+919250984414" class="phone-link"><i class="fa-solid fa-phone"></i> 9250984414</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">PERFORMANCE ADVERTISING ARCHITECTURE</p>
+                <h1>Hyper-Targeted Meta Ads to <span class="cyan-text">Scale Your Revenue</span></h1>
+                <p>We build high-ROI Facebook and Instagram ad systems. No vanity metrics—just premium lead generation, conversion optimization, and algorithmic data scaling tailored for modern enterprises.</p>
+                <a href="#contact"><button class="cta-btn">Launch Campaign</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">The Engine <span class="cyan-text">_</span></h2>
+                    <h3>Data-Driven Growth Architecture</h3>
+                    <p>Shubham Ads Agency is a premium digital execution framework operating out of Sector 48, Sonipat. We don't just "boost posts." We engineer end-to-end conversion funnels designed to out-smart the Meta algorithm.</p>
+                    <p>From custom lookalike scaling matrices to server-side API conversions, we align your marketing budget directly with actual business revenue metrics.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4.8x</div>
+                            <div class="stat-label">Average ROAS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Data Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600" alt="Data Science Lab Matrix">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Meta Ads <span class="cyan-text">Infrastructure</span></h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Laser Targeting & Audiences</h3>
+                    <p>Deep-layer breakdown of buyer personas, custom audiences, detailed behavior filters, and precision-engineered scaling protocols.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>High-Hook Creative Design</h3>
+                    <p>Premium ad copy assets and scroll-stopping visuals built entirely around high-retention psychological conversion triggers.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3>CAPI & Pixel Installation</h3>
+                    <p>Advanced integration of Meta Conversion API (CAPI) and tracking code infrastructure to completely bypass iOS data blind spots.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-filter"></i></div>
+                    <h3>Lead Funnel Engineering</h3>
+                    <p>Building flawless instant-form flows and landing page system pipelines designed to drop ready-to-buy prospects into your CRM.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Budget Optimization & Scaling</h3>
+                    <p>Strategic deployment of CBO (Campaign Budget Optimization) frameworks to aggressively scale winning assets without resetting the learning phase.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY / CAMPAIGNS SECTION -->
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Campaign <span class="cyan-text">Dashboards</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=500" alt="Ad Performance Analysis">
+                    <div class="gallery-overlay"><span>A/B Split Test Analysis</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500" alt="Funnel Matrix">
+                    <div class="gallery-overlay"><span>Scale Infrastructure View</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Conversion Tracking">
+                    <div class="gallery-overlay"><span>ROI Dashboard Matrix</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500" alt="Creative Ideation Lab">
+                    <div class="gallery-overlay"><span>Creative Vector Testing</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Partner <span class="cyan-text">Growth Stories</span></h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Shubham Ads Agency structured a brand new Meta ads funnel for our store. Our customer acquisition costs dropped by 42% in the first month itself!"</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Rohan Malhotra</h4>
+                            <span>E-commerce Founder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Their technical execution with the Meta Conversion API completely revived our tracking metrics. Exceptional dashboard transparency and communication."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Kriti Verma</h4>
+                            <span>B2B Marketing Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS & FORM SECTION -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Initiate <span class="cyan-text">Scaling Matrix</span></h2>
+            <div class="contact-wrapper">
+                
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <input type="text" class="form-input" placeholder="Your Name / Brand Identity" required>
+                    <input type="email" class="form-input" placeholder="Your Business Email Address" required>
+                    <input type="text" class="form-input" placeholder="Current Monthly Ad Spend">
+                    <textarea class="form-input" placeholder="Describe your current bottleneck (e.g., high acquisition cost, bad lead quality, pixel conversion tracking issues)..."></textarea>
+                    <button type="submit" class="cta-btn">Transmit Ad Request</button>
+                </form>
+
+                <div class="contact-info-panel">
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-details">
+                            <h4>Physical Hub Coordinates</h4>
+                            <p>Sector 48, Sonipat,<br>Haryana, India</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-details">
+                            <h4>Consultation Matrix Hours</h4>
+                            <ul>
+                                <li>Monday - Saturday: 09:30 AM – 07:30 PM</li>
+                                <li>Sunday: Algorithmic Audits Only</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-details">
+                            <h4>Direct Agency Hotline</h4>
+                            <p><a href="tel:+919250984414" class="cyan-text">9250984414</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="info-details">
+                            <h4>Digital Inbound Channels</h4>
+                            <p>Secure Mail: grow@shubhamadsagency.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shubham Ads Agency. Scaled to Perfection via Data Architecture. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+isme koi login karega to muhje kaise pta chalega
+
+Bhai, abhi jo code maine diya hai vo sirf ek Frontend Design (HTML/CSS) hai. Isme jo Login button hai, vo sirf ek showpiece (design element) hai. Jab koi uspar click karega, toh abhi kuch nahi hoga kyunki uske peeche koi Backend Database ya notification system nahi juda hai.
+
+Agar aap chahte ho ki jab bhi koi aapki website par login kare ya contact form fill kare, toh aapko turant pata chal jaye, toh aapke paas teen raste hain:
+
+1. Contact Form Submissions (Sabse Aasan Rasta)
+Agar aap chahte ho ki jab koi form fill kare, toh uska data seedhe aapki Email ID par aa jaye, toh aap bina backend code likhe ek free third-party service jaise Formspree ya Web3Forms ka use kar sakte ho.
+
+Ise lagane ka tarika:
+Aapko bas website ke contact form ka action attribute badalna hoga.
+
+HTML
+<!-- Form matrix me ye code replace kar do -->
+<form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+    <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+    <input type="text" name="spend" class="form-input" placeholder="Current Ad Spend">
+    <textarea name="message" class="form-input" placeholder="Describe your issue..."></textarea>
+    <button type="submit" class="cta-btn">Transmit Ad Request</button>
+</form>
+Note: Formspree par free account banakar aapko ek YOUR_UNIQUE_ID milegi, use yahan daal dena. Koi bhi submit karega, seedhe aapko email aayega.
+
+2. Real-Time Login/Signup (Firebase Integration)
+Agar aapko sach me website par ek proper user registration aur login system chahiye, jahan aapko pata chale ki kisne account banaya, toh sabse modern aur aasan tarika hai Google Firebase (Authentication) use karna.
+
+Kaise dikhega? Firebase ka ek free control panel (Dashboard) hota hai.
+
+Aapko kaise pata chalega? Jab bhi koi user login ya register karega, uski Email ID, date aur time aapke Firebase Console Dashboard par real-time me update ho jayegi. Aap wahan se unhe manage bhi kar sakte ho.
+
+3. Telegram / WhatsApp Alert (Advanced Tech Vibe)
+Agar aap chahte ho ki jaise hi koi aapki website par click kare ya login button par click kare, toh turant aapke Personal Telegram App ya WhatsApp par ek notification message aa jaye ("Alert: Someone clicked login on Shubham Ads Agency!"), toh uske liye thoda sa JavaScript aur Telegram Bot API ka use karna padega.
+
+Aapko inme se kaun sa system setup karna hai?
+
+Sirf Contact Form ka data email par chahiye?
+
+Proper Users ka account system chahiye (Firebase)?
+
+Ya Telegram par instantaneous alert chahiye?
+
+Aap batao, main uska exact code is design me jod dunga!
+
+aisa h sab hata ke direct whatsaap ka logo laga do aur mai apne whatsaap ka link deta huu direct mere whatsaap pe land ho jaye
+
+Bhai, yeh sabse badiya aur high-converting tarika hai! Lead generation ke liye direct WhatsApp par client ko lana sabse best hota hai.
+
+Maine poori website se default Form aur Login button hata diya hai, aur uski jagah ek Futuristic Neon Cyan WhatsApp Logo aur Floating WhatsApp Button laga diya hai. Iske sath hi sabhi Buttons (Hero Section, Navigation, and Contact Panel) ko aapke WhatsApp number se connect kar diya hai.
+
+Aapko bas is code ko copy karna hai aur jahan code me 9250984414 likha hai, aapka link wahan auto-configured hai.
+
+Is naye code ko index.html naam se save kar lo:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Ads Agency | Elite Meta Ads & Performance Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0f1d;
+            --bg-surface: #111a30;
+            --bg-card: #172442;
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --whatsapp-neon: #00ffaa;
+            --whatsapp-glow: rgba(0, 255, 170, 0.4);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyan-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .whatsapp-text {
+            color: var(--whatsapp-neon);
+            text-shadow: 0 0 10px var(--whatsapp-glow);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-link {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-link {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--whatsapp-neon);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .phone-link:hover {
+            text-shadow: 0 0 15px var(--whatsapp-glow);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-nav-btn {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border: 2px solid var(--whatsapp-neon);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--whatsapp-neon);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-nav-btn:hover {
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--whatsapp-glow);
+        }
+
+        /* --- FLOATING WHATSAPP CHAT COUNTERPART --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 0 20px var(--whatsapp-glow);
+            z-index: 9999;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 35px var(--whatsapp-neon);
+        }
+
+        /* --- HERO BANNER --- */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,15,29,0.9) 40%, rgba(23,36,66,0.7)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            animation: fadeIn ease 1.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--whatsapp-glow);
+            transition: var(--transition);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--whatsapp-neon);
+        }
+
+        /* --- ABOUT US --- */
+        #about {
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-number {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .about-image img {
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PHOTO GALLERY --- */
+        #gallery {
+            background: var(--bg-surface);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,15,29,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CUSTOMER REVIEWS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            padding: 35px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .review-card::after {
+            content: "\f10d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: rgba(0, 240, 255, 0.05);
+        }
+
+        .stars {
+            color: #ffb800;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* --- CONTACT & DETAILS --- */
+        #contact {
+            background: var(--bg-surface);
+        }
+
+        .contact-panel-centered {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-deep);
+            padding: 50px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .contact-panel-centered h3 {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .contact-panel-centered p.panel-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .info-grid-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .info-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: rgba(23,36,66,0.4);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--whatsapp-neon);
+            background: rgba(0, 255, 170, 0.05);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details li, .info-details a {
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .about-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .info-grid-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .nav-actions .phone-link {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .contact-panel-centered {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20discuss%20about%20Meta%20Ads%20for%20my%20business." class="floating-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                SHUBHAM<span class="cyan-text"> ADS AGENCY</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Core Matrix</a>
+                <a href="#gallery" class="nav-link">Campaigns</a>
+                <a href="#reviews" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="tel:+919250984414" class="phone-link"><i class="fa-solid fa-phone"></i> 9250984414</a>
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20discuss%20about%20Meta%20Ads." target="_blank">
+                    <button class="whatsapp-nav-btn"><i class="fa-brands fa-whatsapp"></i> Chat On WhatsApp</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">PERFORMANCE ADVERTISING ARCHITECTURE</p>
+                <h1>Hyper-Targeted Meta Ads to <span class="cyan-text">Scale Your Revenue</span></h1>
+                <p>We build high-ROI Facebook and Instagram ad systems. No vanity metrics—just premium lead generation, conversion optimization, and algorithmic data scaling tailored for modern enterprises.</p>
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20saw%20your%20website%20and%20want%20to%20launch%20a%20Meta%20Ads%20campaign." target="_blank">
+                    <button class="cta-btn"><i class="fa-brands fa-whatsapp"></i> Launch Campaign Now</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">The Engine <span class="cyan-text">_</span></h2>
+                    <h3>Data-Driven Growth Architecture</h3>
+                    <p>Shubham Ads Agency is a premium digital execution framework operating out of Sector 48, Sonipat. We don't just "boost posts." We engineer end-to-end conversion funnels designed to out-smart the Meta algorithm.</p>
+                    <p>From custom lookalike scaling matrices to server-side API conversions, we align your marketing budget directly with actual business revenue metrics.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4.8x</div>
+                            <div class="stat-label">Average ROAS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Data Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600" alt="Data Science Lab Matrix">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Meta Ads <span class="cyan-text">Infrastructure</span></h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Laser Targeting & Audiences</h3>
+                    <p>Deep-layer breakdown of buyer personas, custom audiences, detailed behavior filters, and precision-engineered scaling protocols.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>High-Hook Creative Design</h3>
+                    <p>Premium ad copy assets and scroll-stopping visuals built entirely around high-retention psychological conversion triggers.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3>CAPI & Pixel Installation</h3>
+                    <p>Advanced integration of Meta Conversion API (CAPI) and tracking code infrastructure to completely bypass iOS data blind spots.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-filter"></i></div>
+                    <h3>Lead Funnel Engineering</h3>
+                    <p>Building flawless instant-form flows and landing page system pipelines designed to drop ready-to-buy prospects into your CRM.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Budget Optimization & Scaling</h3>
+                    <p>Strategic deployment of CBO (Campaign Budget Optimization) frameworks to aggressively scale winning assets without resetting the learning phase.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Campaign <span class="cyan-text">Dashboards</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=500" alt="Ad Performance Analysis">
+                    <div class="gallery-overlay"><span>A/B Split Test Analysis</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500" alt="Funnel Matrix">
+                    <div class="gallery-overlay"><span>Scale Infrastructure View</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Conversion Tracking">
+                    <div class="gallery-overlay"><span>ROI Dashboard Matrix</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500" alt="Creative Ideation Lab">
+                    <div class="gallery-overlay"><span>Creative Vector Testing</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Partner <span class="cyan-text">Growth Stories</span></h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Shubham Ads Agency structured a brand new Meta ads funnel for our store. Our customer acquisition costs dropped by 42% in the first month itself!"</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Rohan Malhotra</h4>
+                            <span>E-commerce Founder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Their technical execution with the Meta Conversion API completely revived our tracking metrics. Exceptional dashboard transparency and communication."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Kriti Verma</h4>
+                            <span>B2B Marketing Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Initiate <span class="cyan-text">Scaling Matrix</span></h2>
+            
+            <div class="contact-panel-centered">
+                <h3 class="whatsapp-text"><i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Setup</h3>
+                <p class="panel-subtitle">Skip the forms. Click below to talk directly with our lead strategist on WhatsApp and get a free audit for your current campaigns.</p>
+                
+                <div class="info-grid-two-col">
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-details">
+                            <h4>Physical Hub Coordinates</h4>
+                            <p>Sector 48, Sonipat,<br>Haryana, India</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-details">
+                            <h4>Consultation Hours</h4>
+                            <p>Monday - Saturday:<br>09:30 AM – 07:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20book%20a%20free%20Meta%20Ads%20audit." target="_blank">
+                    <button class="cta-btn" style="font-size: 1.4rem; padding: 18px 50px;">
+                        <i class="fa-brands fa-whatsapp"></i> Connect Instantly On WhatsApp
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shubham Ads Agency. Scaled to Perfection via Data Architecture. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+email bhi hata doo
+
+Bhai, bilkul clean aur direct kar diya! Website se email waala pura aspect aur extra links hata diye hain. Ab poori website par sirf aur sirf WhatsApp aur Direct Call ka option hai, taaki client ke paas aapko seedhe message karne ke alawa koi aur rasta na bache (High conversion strategy).
+
+Yeh rha aapka updated code:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Ads Agency | Elite Meta Ads & Performance Marketing</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-deep: #0a0f1d;
+            --bg-surface: #111a30;
+            --bg-card: #172442;
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --whatsapp-neon: #00ffaa;
+            --whatsapp-glow: rgba(0, 255, 170, 0.4);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-tech: 'Orbitron', sans-serif;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cyan-text {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .whatsapp-text {
+            color: var(--whatsapp-neon);
+            text-shadow: 0 0 10px var(--whatsapp-glow);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-link {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-link {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--whatsapp-neon);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .phone-link:hover {
+            text-shadow: 0 0 15px var(--whatsapp-glow);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-nav-btn {
+            font-family: var(--font-nav);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border: 2px solid var(--whatsapp-neon);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--whatsapp-neon);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-nav-btn:hover {
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px var(--whatsapp-glow);
+        }
+
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 0 20px var(--whatsapp-glow);
+            z-index: 9999;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 35px var(--whatsapp-neon);
+        }
+
+        /* --- HERO BANNER --- */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,15,29,0.9) 40%, rgba(23,36,66,0.7)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            animation: fadeIn ease 1.5s;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            font-family: var(--font-nav);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            background: var(--whatsapp-neon);
+            color: var(--bg-deep);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--whatsapp-glow);
+            transition: var(--transition);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--whatsapp-neon);
+        }
+
+        /* --- ABOUT US --- */
+        #about {
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-number {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .about-image img {
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-card);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- PHOTO GALLERY --- */
+        #gallery {
+            background: var(--bg-surface);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 240px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,15,29,0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* --- CUSTOMER REVIEWS --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            padding: 35px;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .review-card::after {
+            content: "\f10d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 2.5rem;
+            color: rgba(0, 240, 255, 0.05);
+        }
+
+        .stars {
+            color: #ffb800;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .client-info span {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* --- CONTACT & DETAILS --- */
+        #contact {
+            background: var(--bg-surface);
+        }
+
+        .contact-panel-centered {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-deep);
+            padding: 50px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .contact-panel-centered h3 {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .contact-panel-centered p.panel-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .info-grid-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .info-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: rgba(23,36,66,0.4);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--whatsapp-neon);
+            background: rgba(0, 255, 170, 0.05);
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .info-details h4 {
+            font-family: var(--font-tech);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .info-details p, .info-details li, .info-details a {
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .about-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .info-grid-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .nav-actions .phone-link {
+                display: none;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .contact-panel-centered {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING WHATSAPP BUTTON (EVERYWHERE) -->
+    <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20discuss%20about%20Meta%20Ads%20for%20my%20business." class="floating-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                SHUBHAM<span class="cyan-text"> ADS AGENCY</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Core Matrix</a>
+                <a href="#gallery" class="nav-link">Campaigns</a>
+                <a href="#reviews" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="tel:+919250984414" class="phone-link"><i class="fa-solid fa-phone"></i> 9250984414</a>
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20discuss%20about%20Meta%20Ads." target="_blank">
+                    <button class="whatsapp-nav-btn"><i class="fa-brands fa-whatsapp"></i> Chat On WhatsApp</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">PERFORMANCE ADVERTISING ARCHITECTURE</p>
+                <h1>Hyper-Targeted Meta Ads to <span class="cyan-text">Scale Your Revenue</span></h1>
+                <p>We build high-ROI Facebook and Instagram ad systems. No vanity metrics—just premium lead generation, conversion optimization, and algorithmic data scaling tailored for modern enterprises.</p>
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20saw%20your%20website%20and%20want%20to%20launch%20a%20Meta%20Ads%20campaign." target="_blank">
+                    <button class="cta-btn"><i class="fa-brands fa-whatsapp"></i> Launch Campaign Now</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">The Engine <span class="cyan-text">_</span></h2>
+                    <h3>Data-Driven Growth Architecture</h3>
+                    <p>Shubham Ads Agency is a premium digital execution framework operating out of Sector 48, Sonipat. We don't just "boost posts." We engineer end-to-end conversion funnels designed to out-smart the Meta algorithm.</p>
+                    <p>From custom lookalike scaling matrices to server-side API conversions, we align your marketing budget directly with actual business revenue metrics.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4.8x</div>
+                            <div class="stat-label">Average ROAS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Data Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600" alt="Data Science Lab Matrix">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Meta Ads <span class="cyan-text">Infrastructure</span></h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Laser Targeting & Audiences</h3>
+                    <p>Deep-layer breakdown of buyer personas, custom audiences, detailed behavior filters, and precision-engineered scaling protocols.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>High-Hook Creative Design</h3>
+                    <p>Premium ad copy assets and scroll-stopping visuals built entirely around high-retention psychological conversion triggers.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3>CAPI & Pixel Installation</h3>
+                    <p>Advanced integration of Meta Conversion API (CAPI) and tracking code infrastructure to completely bypass iOS data blind spots.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-filter"></i></div>
+                    <h3>Lead Funnel Engineering</h3>
+                    <p>Building flawless instant-form flows and landing page system pipelines designed to drop ready-to-buy prospects into your CRM.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Budget Optimization & Scaling</h3>
+                    <p>Strategic deployment of CBO (Campaign Budget Optimization) frameworks to aggressively scale winning assets without resetting the learning phase.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY / CAMPAIGNS SECTION -->
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Campaign <span class="cyan-text">Dashboards</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=500" alt="Ad Performance Analysis">
+                    <div class="gallery-overlay"><span>A/B Split Test Analysis</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500" alt="Funnel Matrix">
+                    <div class="gallery-overlay"><span>Scale Infrastructure View</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" alt="Conversion Tracking">
+                    <div class="gallery-overlay"><span>ROI Dashboard Matrix</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500" alt="Creative Ideation Lab">
+                    <div class="gallery-overlay"><span>Creative Vector Testing</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Partner <span class="cyan-text">Growth Stories</span></h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Shubham Ads Agency structured a brand new Meta ads funnel for our store. Our customer acquisition costs dropped by 42% in the first month itself!"</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Rohan Malhotra</h4>
+                            <span>E-commerce Founder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Their technical execution with the Meta Conversion API completely revived our tracking metrics. Exceptional dashboard transparency and communication."</p>
+                    <div class="client-info">
+                        <div>
+                            <h4>Kriti Verma</h4>
+                            <span>B2B Marketing Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS (CENTERED WHATSAPP INTERACTION) -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Initiate <span class="cyan-text">Scaling Matrix</span></h2>
+            
+            <div class="contact-panel-centered">
+                <h3 class="whatsapp-text"><i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Setup</h3>
+                <p class="panel-subtitle">Skip the forms. Click below to talk directly with our lead strategist on WhatsApp and get a free audit for your current campaigns.</p>
+                
+                <div class="info-grid-two-col">
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-details">
+                            <h4>Physical Hub Coordinates</h4>
+                            <p>Sector 48, Sonipat,<br>Haryana, India</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="info-details">
+                            <h4>Consultation Hours</h4>
+                            <p>Monday - Saturday:<br>09:30 AM – 07:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20book%20a%20free%20Meta%20Ads%20audit." target="_blank">
+                    <button class="cta-btn" style="font-size: 1.4rem; padding: 18px 50px;">
+                        <i class="fa-brands fa-whatsapp"></i> Connect Instantly On WhatsApp
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shubham Ads Agency. Scaled to Perfection via Data Architecture. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+Aap is code ko direct paste karke check kar lo, bilkul perfect chalega! Koi aur change karna ho toh batao.
+
+bhai thoda aur amazing banao yaar ki clinte dekhe to acctrat ho
+
+Bhai, ab maine ise ekdum Next-Level Luxury Cyberpunk Aur Premium Tech Look de diya hai! Jab koi premium client ya business owner is website ko dekhega, toh unhe ek ultra-professional luxury marketing agency ka feel aayega.
+
+Isme maine yeh sab cheezein upgrade kari hain:
+
+Premium Fonts & Styling: 'Space Grotesk' aur 'Syncopate' fonts ka use kiya hai jo top global brands use karte hain.
+
+Glassmorphism Effect: Card elements ko translucent (glass jaisa) aur radiant cyan/purple glow look diya hai.
+
+High-Tech Stats Window: Hero section ke right side me real-time high-ROI tracking matrix design kar diya hai (Average ROAS: 5.4x, Data accuracy 99.8%).
+
+Pulsing WhatsApp Radar Animation: Jo aapka bottom-right floating WhatsApp icon hai, uske peeche ek smooth luxury pulsing wave laga di hai jo client ka dhyan turant attract karegi.
+
+No Forms/No Emails: Poora traffic zero friction ke sath seedhe aapke WhatsApp link par flow karega.
+
+Aapka updated dynamic file ready hai. Naya code niche diya gaya hai, ise save kar lo:
+HTML icon
+index
+ HTML 
+Open
+
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -777,3 +5151,798 @@
 
 </body>
 </html>
+
+
+
+Gemini is AI and can make mistakes.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Ads Agency | Elite Meta Ads Hyper-Scale Matrix</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syncopate:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- HIGH-END PREMIUM DESIGN MATRIX --- */
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --border-glow: rgba(0, 240, 255, 0.15);
+            --primary-neon: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --whatsapp-neon: #00ffaa;
+            --whatsapp-glow: rgba(0, 255, 170, 0.5);
+            --text-pure: #ffffff;
+            --text-lux: #9ca3af;
+            --font-display: 'Syncopate', sans-serif;
+            --font-title: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-premium: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- GLOBAL SMOOTH RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-pure);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Glow Particles */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 255, 170, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- CONTAINER STRUCTURE --- */
+        .container {
+            width: 90%;
+            max-width: 1240px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        /* Premium Heading Meta Style */
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .badge-premium {
+            font-family: var(--font-title);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary-neon);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(0, 240, 255, 0.05);
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-pure);
+        }
+
+        .gradient-cyan {
+            background: linear-gradient(90deg, var(--primary-neon), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-whatsapp {
+            background: linear-gradient(90deg, var(--whatsapp-neon), #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- FLOATING PREMIUM WHATSAPP RADAR --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--whatsapp-neon);
+            color: #000;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            box-shadow: 0 0 30px var(--whatsapp-glow);
+            z-index: 9999;
+            transition: var(--transition-premium);
+        }
+
+        .floating-whatsapp::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 2px solid var(--whatsapp-neon);
+            border-radius: 50%;
+            animation: pulse-ring 2s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 0 45px var(--whatsapp-neon);
+        }
+
+        /* --- NAVIGATION HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            z-index: 1000;
+            transition: var(--transition-premium);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-neon);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--text-lux);
+            transition: var(--transition-premium);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .whatsapp-nav-btn {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px 26px;
+            border: 1px solid var(--whatsapp-neon);
+            border-radius: 6px;
+            background: rgba(0, 255, 170, 0.03);
+            color: var(--whatsapp-neon);
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-premium);
+        }
+
+        .whatsapp-nav-btn:hover {
+            background: var(--whatsapp-neon);
+            color: #000;
+            box-shadow: 0 0 25px var(--whatsapp-glow);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO LUXURY ULTRA SECTION --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: radial-gradient(circle at 75% 40%, rgba(168, 85, 247, 0.06), transparent 50%),
+                        radial-gradient(circle at 25% 70%, rgba(0, 240, 255, 0.05), transparent 45%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero-title-main {
+            font-family: var(--font-title);
+            font-size: 4.2rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 30px;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-lux);
+            margin-bottom: 45px;
+            font-weight: 300;
+            max-width: 620px;
+        }
+
+        .premium-cta-master {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 20px 45px;
+            background: linear-gradient(135deg, var(--whatsapp-neon), #00f0ff);
+            color: #030712;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.25);
+            transition: var(--transition-premium);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .premium-cta-master:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 255, 170, 0.4);
+        }
+
+        /* High Tech Visual Framework Counterpart */
+        .hero-visual-frame {
+            border: 1px solid var(--border-glow);
+            background: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .visual-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .dot-inc {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+        .dot-inc:nth-child(2) { background: #eab308; }
+        .dot-inc:nth-child(3) { background: #22c55e; }
+
+        .stat-card-premium {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-card-premium:last-child { margin-bottom: 0; }
+
+        .stat-meta-label {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            color: var(--text-lux);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-meta-value {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--whatsapp-neon);
+        }
+
+        /* --- THE CORE SYSTEM MATRIX (SERVICES) --- */
+        #services {
+            background: rgba(17, 24, 39, 0.2);
+            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .luxury-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 45px 35px;
+            transition: var(--transition-premium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.05), transparent 60%);
+            opacity: 0;
+            transition: var(--transition-premium);
+        }
+
+        .luxury-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.05);
+        }
+
+        .luxury-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon-frame {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: rgba(0, 240, 255, 0.06);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: var(--primary-neon);
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        .luxury-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .luxury-card p {
+            color: var(--text-lux);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- CLIENT PROOF / RESULTS GRID --- */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .proof-card {
+            background: linear-gradient(145deg, rgba(17, 24, 39, 0.8), rgba(3, 7, 18, 0.9));
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .proof-stars {
+            color: #fbbf24;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .proof-text {
+            font-size: 1.1rem;
+            color: #e5e7eb;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .proof-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
+
+        .proof-info h4 {
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            color: var(--text-pure);
+        }
+
+        .proof-info span {
+            font-size: 0.85rem;
+            color: var(--primary-neon);
+            font-family: var(--font-title);
+        }
+
+        /* --- THE RADIANT ULTIMATE CONTACT PANEL --- */
+        .ultimate-box {
+            background: linear-gradient(180deg, rgba(17,24,39,0.5) 0%, rgba(3,7,18,0.9) 100%);
+            border: 1px solid rgba(0, 255, 170, 0.25);
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            box-shadow: 0 30px 70px rgba(0, 255, 170, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ultimate-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--whatsapp-neon), transparent);
+        }
+
+        .ultimate-box h2 {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .ultimate-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-lux);
+            max-width: 680px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+
+        .meta-coord-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 750px;
+            margin: 0 auto 50px;
+        }
+
+        .coord-item {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .coord-icon {
+            font-size: 1.5rem;
+            color: var(--whatsapp-neon);
+            background: rgba(0, 255, 170, 0.05);
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .coord-details h4 {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            color: var(--text-pure);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .coord-details p {
+            color: var(--text-lux);
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER MODERNE --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding: 40px 0;
+            background: #020613;
+            text-align: center;
+        }
+
+        footer p {
+            color: #4b5563;
+            font-size: 0.9rem;
+            font-family: var(--font-title);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- MOBILE ADAPTABILITY --- */
+        @media (max-width: 1024px) {
+            .hero-title-main { font-size: 3.2rem; }
+            .luxury-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-title-main { font-size: 2.5rem; }
+            .hero-desc { margin: 0 auto 35px; }
+            .luxury-grid, .proof-grid, .meta-coord-grid { grid-template-columns: 1fr; }
+            .ultimate-box { padding: 50px 20px; }
+            .ultimate-box h2 { font-size: 1.9rem; }
+            .floating-whatsapp { bottom: 25px; right: 25px; width: 55px; height: 55px; font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING HIGH-GLOW WHATSAPP BUTTON -->
+    <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20grow%20my%20business%20via%20Meta%20Ads." class="floating-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- PREMIUM HEADER -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                SHUBHAM <span class="gradient-cyan">ADS</span> <span class="logo-dot"></span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Matrix</a>
+                <a href="#services" class="nav-link">Frameworks</a>
+                <a href="#proof" class="nav-link">Validation</a>
+                <a href="#contact" class="nav-link">Establish Connection</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20audit%20my%20Meta%20Ads." target="_blank">
+                    <button class="whatsapp-nav-btn"><i class="fa-brands fa-whatsapp"></i> Live Chat</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ULTRA LUXURY HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="badge-premium">Meta Algorithms Architect</span>
+                <h1 class="hero-title-main">Stop Burning Ad Spend. Start <span class="gradient-cyan">Dominating ROI.</span></h1>
+                <p class="hero-desc">We design high-retention performance marketing systems on Facebook & Instagram that systematically turn cold clicks into premium lifelong consumers. Engineered for aggressive scaling.</p>
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20scale%20my%20business." target="_blank">
+                    <button class="premium-cta-master"><i class="fa-brands fa-whatsapp"></i> Secure Free Strategy Call</button>
+                </a>
+            </div>
+            
+            <div class="hero-visual-frame">
+                <div class="visual-header">
+                    <div class="dot-inc"></div><div class="dot-inc"></div><div class="dot-inc"></div>
+                </div>
+                <div class="stat-card-premium">
+                    <span class="stat-meta-label">Average Scale ROAS</span>
+                    <span class="stat-meta-value">5.4x</span>
+                </div>
+                <div class="stat-card-premium">
+                    <span class="stat-meta-label">Data Accuracy Matrix</span>
+                    <span class="stat-meta-value" style="color: var(--primary-neon);">99.8%</span>
+                </div>
+                <div class="stat-card-premium">
+                    <span class="stat-meta-label">Active Lead Pipeline</span>
+                    <span class="stat-meta-value" style="color: #a855f7;">LIVE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE INFRASTRUCTURE MATRIX -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge-premium">Operational Systems</span>
+                <h2 class="section-title">The Scaling <span class="gradient-cyan">Protocols</span></h2>
+            </div>
+            
+            <div class="luxury-grid">
+                <div class="luxury-card">
+                    <div class="card-icon-frame"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Hyper-Targeting Engine</h3>
+                    <p>Bypassing generic interest filters using proprietary deep-data custom lookalikes and exact algorithmic audience profiling.</p>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-icon-frame" style="color: #a855f7; background: rgba(168,85,247,0.06); border-color: rgba(168,85,247,0.2);"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>High-Hook Creative Vectors</h3>
+                    <p>Psychologically engineered video structures and visual ad assets optimized completely for extreme retention and elite CTR.</p>
+                </div>
+
+                <div class="luxury-card">
+                    <div class="card-icon-frame" style="color: var(--whatsapp-neon); background: rgba(0,255,170,0.06); border-color: rgba(0,255,170,0.2);"><i class="fa-solid fa-server"></i></div>
+                    <h3>Server-Side CAPI Setup</h3>
+                    <p>Advanced Meta Conversions API implementation eliminating data tracking loss caused by iOS privacy constraints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALIDATION SECTIONS (TESTIMONIALS) -->
+    <section id="proof" class="section-padding" style="border-top: 1px solid rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge-premium">Proof of Execution</span>
+                <h2 class="section-title">Validated <span class="gradient-cyan">Alpha Growth</span></h2>
+            </div>
+
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div>
+                        <div class="proof-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="proof-text">"Shubham Ads Agency structured a pristine funnel framework for our venture. Acquisition overhead slashed by 45% within 30 execution cycles."</p>
+                    </div>
+                    <div class="proof-profile">
+                        <div class="proof-info">
+                            <h4>Rohan Malhotra</h4>
+                            <span>Founder, Luxury Retail</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proof-card">
+                    <div>
+                        <div class="proof-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="proof-text">"The server-side pixel tracking matrix they integrated perfectly restored our conversion match quality metrics. Absolutely phenomenal execution."</p>
+                    </div>
+                    <div class="proof-profile">
+                        <div class="proof-info">
+                            <h4>Kriti Verma</h4>
+                            <span>Enterprise Scale Director</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT INTERACTION BOX -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="ultimate-box">
+                <span class="badge-premium" style="color: var(--whatsapp-neon); border-color: rgba(0,255,170,0.3); background: rgba(0,255,170,0.05);">Zero Friction Connection</span>
+                <h2>Initialize <span class="gradient-whatsapp">Hyper-Growth</span></h2>
+                <p class="ultimate-subtitle">Skip slow formal back-and-forth emails. Tap into instant direct communications and request an expert layout audit for your active channels right away.</p>
+                
+                <div class="meta-coord-grid">
+                    <div class="coord-item">
+                        <div class="coord-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+                        <div class="coord-details">
+                            <h4>HQ Grid Coordinate</h4>
+                            <p>Sector 48, Sonipat, HR, IN</p>
+                        </div>
+                    </div>
+                    <div class="coord-item">
+                        <div class="coord-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="coord-details">
+                            <h4>Active Operation Hours</h4>
+                            <p>Mon - Sat | 09:30 AM - 07:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/919250984414?text=Hi%20Shubham%20Ads%20Agency,%20I%20want%20to%20book%20a%20free%20Meta%20Ads%20audit." target="_blank">
+                    <button class="premium-cta-master" style="font-size: 1.3rem; padding: 22px 60px;">
+                        <i class="fa-brands fa-whatsapp"></i> Connect Directly via WhatsApp
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MATRIX -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shubham Ads Agency. Algorithmic Supremacy. Built for Premium Converters.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+index.html
+Displaying index.html.
